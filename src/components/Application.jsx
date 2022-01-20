@@ -78,7 +78,7 @@ export default function Application() {
             <List nasaInfo={nasaInfo} style={{width:"100%"}}/>
           }
           { loading &&
-            <div> .....Loading</div>
+            <div> ....Loading</div>
           }
       </main>
     </ThemeProvider>
