@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import { BASE_URL, API_KEY, END_POINT } from "../helpers/constants";
 import axios from 'axios';
 
-import { API_URL } from "../helpers/constants"
+
 
 const LOADING = "LOADING"
 
