@@ -8,11 +8,13 @@ const LOADING = "LOADING"
 
 export default function useApplicationData () { 
   const [nasaInfo, setNasaInfo] = useState({});
-  
+  const [loading, setLoading] = useState(true)
   const fetchNasaInfo = async () => {
     try {
       const { data } = await axios.get(`${BASE_URL}/${END_POINT}&api_key=${API_KEY}`)
-      setNasaInfo(data)    
+      setNasaInfo(data.photos)  
+      setTimeout(() => {setLoading(false)}, 3000);
+
     } catch(err) {
       console.log(err);
     }
@@ -24,6 +26,6 @@ export default function useApplicationData () {
 
   return {
     nasaInfo,
-    setNasaInfo
+    loading
   }
 }

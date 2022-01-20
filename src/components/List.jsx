@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/ProductList.scss";
+// import "../styles/ProductList.scss";
 import Item from "./Item";
 import { makeStyles } from "@mui/styles";
 
