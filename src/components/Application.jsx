@@ -16,8 +16,8 @@ import "../styles/Application.scss";
 const useStyles = makeStyles((theme) => ({
   '@global':{
     main:{
-      backgroundColor:"#004c3f",
-      color:'#fbf7ed',
+      backgroundColor:"white",
+      color:'black',
       
 
     }
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   toolBar: {
 
-    backgroundColor: '#004c3f',
+    backgroundColor: 'white',
     display:"flex", 
     justifyContent: "space-between", 
     width:"100%" 
