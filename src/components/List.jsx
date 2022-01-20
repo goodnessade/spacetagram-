@@ -1,21 +1,29 @@
 import React from "react";
-// import "../styles/ProductList.scss";
+import "../styles/List.scss";
 import Item from "./Item";
 import { makeStyles } from "@mui/styles";
 
 
 const useStyles = makeStyles({
   root: {
+    display:"flex",
   },
 });
 
 const List = (props) => {
-  const {} = props;
   const classes = useStyles();
-  return (
-    <section>
+  const {
+    nasaInfo
+  } = props;
 
-    </section>
+  const nasaRenders = nasaInfo.map((info) => {
+    return (<div className={classes.root}>
+        <Item key={info.id} id={info.id} rover={info.rover} camera={info.camera} date={info.earth_date} image={info.img_src}/>
+      </div>)
+  })
+
+  return (
+    nasaRenders
   );
 };
 

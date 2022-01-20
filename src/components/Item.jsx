@@ -9,7 +9,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
-
 const useStyles = makeStyles({
   root: {
     display: "flex",
@@ -21,62 +20,78 @@ const useStyles = makeStyles({
     borderRadius: "10px",
     boxShadow: "-15px -15px 15px rgba(255, 255, 255, 0), 15px 15px 15px rgba(255,255,255,0.3)",
 
-
-
   },
   media: {
     backgroundSize: "contain",
     height: 220,
   },
   mediaContent: {
-    padding: "1em 1em 0em 1em"
+    padding: "0.4em 0.4em 0em 0.4em"
   },
   date: {
-    fontSize:"0.8em",
+    fontSize:"0.2em",
     fontWeight:"100",
-    margin:"0em 0em 0.4em 0em"
+    margin:"0em 0em 1em 0em"
+    
   },
   description: {
-    marginBottom:"0.4em"
+    marginBottom:"0.2em"
   },
   icon: {
-    marginLeft:"0.4em"
+    marginLeft:"0.2em"
+  },
+
+  likedIcon: {
+    marginLeft:"0.4em",
+    color:"#66FF00"
   },
   name: {
-    marginBottom:"0.5em",
-    fontSize:"1em"
+    marginBottom:"0.3em",
+    fontSize:"0.3em",
+    fontWeight: "bold"
   }
-
-
 });
 
 export default function Item(props) {
   const classes = useStyles();
+  const {
+    rover,
+    date,
+    camera,
+    image
+  } = props;
 
+  const [like, setLike] = useState(false)
+
+  const handleLike= () => {
+    setLike(!like);
+  }
+
+  const name = `${rover.name} rover - ${camera.full_name}`
   return (
     <>
-    <Card className={classes.root}>
+      <Card className={classes.root}>
         <CardActionArea>
           <div className={classes.mediaContent}>
             <CardMedia
             className={classes.media}
-            // image={image}
+            image={image}
             alt="product image"
             title="nasa pic"
             />
           </div>
           <CardContent>
             <div className={classes.name}>
-              {/* {name} */}
+              {name}
             </div>
-            <div className={classes.date}> Date - </div>
+            <div className={classes.date}> Date - {date} </div>
             <Typography
               variant="body2"
               color="textSecondary"
               component="p"
               className={classes.description}
             >
-             Launch Date - 
+             Launch Date - {rover.launch_date}
             </Typography>
             <Typography
               variant="body2"
@@ -84,7 +99,7 @@ export default function Item(props) {
               component="p"
               className={classes.description}
             >
-             Landing Date - 
+             Landing Date - {rover.landing_date}
             </Typography>
             <Typography
               variant="body2"
@@ -92,12 +107,12 @@ export default function Item(props) {
               component="p"
               className={classes.description}
             >
-             Status - 
+             Status - {rover.status}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions >
-        <ThumbUpIcon className={classes.icon}/>
+        <ThumbUpIcon className={like ? classes.likedIcon: classes.icon}onClick = {handleLike}/>
         </CardActions>
       </Card>
     </>
